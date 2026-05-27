@@ -1,0 +1,99 @@
+{
+  "detectors": [
+    {
+      "id": "det-prod-use1",
+      "accountId": "111122223333",
+      "region": "us-east-1",
+      "status": "ACTIVE",
+      "dataSources": ["KUBERNETES_AUDIT_LOGS", "MALWARE_PROTECTION"],
+      "publishingDestination": true
+    },
+    {
+      "id": "det-sec-euw1",
+      "accountId": "444455556666",
+      "region": "eu-west-1",
+      "status": "DISABLED",
+      "dataSources": ["S3_DATA_EVENTS"],
+      "publishingDestination": false
+    }
+  ],
+  "findings": [
+    {
+      "id": "gd-001",
+      "type": "UnauthorizedAccess:EC2/InstanceCredentialExfiltration.OutsideAWS",
+      "title": "EC2 instance credentials used outside AWS",
+      "region": "us-east-1",
+      "severity": "high",
+      "status": "ACTIVE",
+      "resourceType": "EC2",
+      "resource": "i-0f014c9e11appapi",
+      "principal": "arn:aws:iam::111122223333:role/app-prod-ec2",
+      "service": "EC2",
+      "createdAt": "2026-05-26T10:10:00Z",
+      "updatedAt": "2026-05-26T13:42:00Z",
+      "owner": "Cloud Security Engineering",
+      "note": "Cut session and rotate role credentials before the next deploy window."
+    },
+    {
+      "id": "gd-002",
+      "type": "CryptoCurrency:EC2/BitcoinTool.B!DNS",
+      "title": "Crypto-mining signal on media worker",
+      "region": "us-east-1",
+      "severity": "medium",
+      "status": "ACTIVE",
+      "resourceType": "EC2",
+      "resource": "i-0a91b2mediaworker",
+      "service": "EC2",
+      "createdAt": "2026-05-25T23:15:00Z",
+      "updatedAt": "2026-05-26T00:40:00Z",
+      "owner": "Platform SRE",
+      "note": "Isolate workload and review recent AMI drift."
+    },
+    {
+      "id": "gd-003",
+      "type": "Discovery:Kubernetes/SuccessfulAnonymousAccess",
+      "title": "Anonymous access succeeded against EKS control plane",
+      "region": "us-east-1",
+      "severity": "high",
+      "status": "ACTIVE",
+      "resourceType": "EKSCluster",
+      "resource": "eks/prod-growth-cluster",
+      "service": "EKS",
+      "createdAt": "2026-05-24T18:00:00Z",
+      "updatedAt": "2026-05-24T18:55:00Z",
+      "owner": "Cluster Security",
+      "note": "Validate API server exposure and kubeconfig issuance."
+    },
+    {
+      "id": "gd-004",
+      "type": "Exfiltration:S3/ObjectRead.Unusual",
+      "title": "Unusual object read from finance bucket",
+      "region": "us-east-1",
+      "severity": "high",
+      "status": "ACTIVE",
+      "resourceType": "S3Bucket",
+      "resource": "s3://kg-finance-exports-prod",
+      "service": "S3",
+      "createdAt": "2026-05-24T09:00:00Z",
+      "updatedAt": "2026-05-24T09:15:00Z",
+      "owner": "Data Security",
+      "note": "Cross-check with expected export job windows and VPC endpoint policy."
+    },
+    {
+      "id": "gd-005",
+      "type": "Recon:IAMUser/AnomalousBehavior",
+      "title": "IAM user unusual read sequence",
+      "region": "eu-west-1",
+      "severity": "medium",
+      "status": "ARCHIVED",
+      "resourceType": "IAMUser",
+      "resource": "iam/miz-temp-audit",
+      "principal": "arn:aws:iam::444455556666:user/miz-temp-audit",
+      "service": "IAM",
+      "createdAt": "2026-05-20T12:00:00Z",
+      "updatedAt": "2026-05-21T08:00:00Z",
+      "owner": "Identity Operations",
+      "note": "Closed after expected audit replay was confirmed."
+    }
+  ]
+}

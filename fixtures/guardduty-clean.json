@@ -1,0 +1,29 @@
+{
+  "detectors": [
+    {
+      "id": "det-core-use1",
+      "accountId": "999900001111",
+      "region": "us-east-1",
+      "status": "ACTIVE",
+      "dataSources": ["KUBERNETES_AUDIT_LOGS", "MALWARE_PROTECTION", "S3_DATA_EVENTS"],
+      "publishingDestination": true
+    }
+  ],
+  "findings": [
+    {
+      "id": "gd-clean-01",
+      "type": "Recon:IAMUser/AnomalousBehavior",
+      "title": "Expected audit replay",
+      "region": "us-east-1",
+      "severity": "low",
+      "status": "ARCHIVED",
+      "resourceType": "IAMUser",
+      "resource": "iam/audit-bot",
+      "principal": "arn:aws:iam::999900001111:user/audit-bot",
+      "service": "IAM",
+      "createdAt": "2026-05-29T12:00:00Z",
+      "updatedAt": "2026-05-29T13:00:00Z",
+      "owner": "Identity Operations"
+    }
+  ]
+}
