@@ -25,6 +25,30 @@ This repo demonstrates the AWS managed-threat-detection control-plane primitive 
 - offline-safe analysis of captured AWS GuardDuty exports
 - recruiter-facing AWS threat-detection / incident-response proof that complements the Microsoft, GCP, and broader cloud-admin lanes
 
+## Product depth
+
+AWS GuardDuty Triage Board is a leadership-readable threat-operations surface for AWS estates. It helps platform, SOC, compliance, and cloud-finance leaders understand which detectors are healthy, which findings are material, which owners need to act, and what response packet should move before risk becomes board-visible.
+
+- **Buyer value:** reduces alert sprawl by turning GuardDuty exports into a clear containment queue for credential abuse, runtime compromise, exfiltration risk, and detector coverage gaps.
+- **Technical proof:** normalizes synthetic GuardDuty detector and finding exports into detector lanes, finding-risk rows, response posture cards, verification packets, CLI output, and prerendered routes.
+- **GTM story:** positions AWS threat detection as an operator-grade control plane that complements IAM Access Analyzer, GCP IAM drift, Microsoft Entra governance, and broader cloud-security readiness.
+
+## What these repos have in common
+
+Every Kinetic Gain operator surface follows the same pattern: convert fragmented admin exports into leadership-readable decisions without exposing live cloud credentials or tenant data.
+
+- **Risk signal:** disabled detectors, stale findings, credential abuse, runtime compromise, and exfiltration posture are modeled explicitly.
+- **Owner context:** every lane ties the finding to a cloud, SOC, platform, or response owner.
+- **Evidence packet:** summary APIs, sample JSON, screenshots, docs, and CLI output make the proof reusable for audits, demos, and diligence.
+- **Next action:** each route names the corrective move so the page is operational, not just descriptive.
+
+## Operating workflow
+
+1. Load normalized GuardDuty detector and finding exports or use the included synthetic fixture.
+2. Score detector coverage, high-severity findings, stale finding pressure, malware/runtime signals, and exfiltration posture.
+3. Route the highest-risk findings into response packets with owner, blocker, readiness score, and next checkpoint.
+4. Publish the static proof surface for review by platform, SOC, compliance, and buyer-facing teams.
+
 ## Routes
 
 - `/`

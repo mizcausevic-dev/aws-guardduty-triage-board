@@ -166,6 +166,8 @@ function layout(title: string, active: string, body: string) {
         display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
         font-family:var(--mono); font-size:11px; color:var(--muted2); letter-spacing:.08em;
       }
+      .footer a{color:var(--bert2); text-decoration:none}
+      .footer a:hover{text-decoration:underline}
       a{color:inherit}
       code{font-family:var(--mono); font-size:12px; color:var(--bert2); background:rgba(25,199,255,.08); padding:1px 6px; border-radius:5px; border:1px solid rgba(25,199,255,.18);}
     </style>
@@ -211,14 +213,20 @@ function layout(title: string, active: string, body: string) {
       ${body}
       <div class="footer">
         <div>aws-guardduty-triage-board · synthetic sample data only</div>
-        <div>routes: / · /detector-lane · /finding-risks · /response-posture · /verification · /docs</div>
+        <div>
+          <a href="https://github.com/mizcausevic-dev/aws-guardduty-triage-board">GitHub</a> ·
+          <a href="https://portfolio.kineticgain.com/">Portfolio</a> ·
+          <a href="https://suite.kineticgain.com/">Suite</a> ·
+          <a href="https://www.linkedin.com/in/mizcausevic/">LinkedIn</a> ·
+          <a href="https://kineticgain.com/">Kinetic Gain</a>
+        </div>
       </div>
     </div>
   </body>
 </html>`;
 }
 
-function severityClass(value: string) {
+export function severityClass(value: string) {
   if (value === "high" || value === "red") return "red";
   if (value === "medium" || value === "yellow") return "yellow";
   if (value === "green" || value === "low") return "green";
@@ -247,6 +255,22 @@ export function renderOverview() {
           <div class="src"><div class="src-name">containment first</div><div class="src-tit">Route the threat before trust slips</div><p>${metrics.recommendation}</p></div>
           <div class="src"><div class="src-name">finding evidence</div><div class="src-tit">Turn GuardDuty exports into operator proof</div><p>Every lane stays tied to owner, threat focus, finding severity, and the next concrete response move.</p></div>
           <div class="src"><div class="src-name">recruiter signal</div><div class="src-tit">Show real AWS threat-ops depth</div><p>This is real GuardDuty triage and response proof, not generic cloud-security copy.</p></div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="sh"><h2>Product depth</h2><div class="note">buyer value · technical proof · GTM story</div></div>
+        <div class="stack">
+          <div class="src"><div class="src-name">Buyer value</div><div class="src-tit">Cut through alert sprawl</div><p>Platform, SOC, compliance, and cloud-finance leaders get one containment queue for credential abuse, runtime compromise, exfiltration risk, stale findings, and detector coverage gaps.</p></div>
+          <div class="src"><div class="src-name">Technical proof</div><div class="src-tit">Normalize GuardDuty exports into response packets</div><p>The analyzer converts synthetic detector and finding records into detector lanes, finding-risk rows, response posture cards, verification packets, CLI output, and prerendered review routes.</p></div>
+          <div class="src"><div class="src-name">GTM story</div><div class="src-tit">Make AWS threat detection board-readable</div><p>The surface positions GuardDuty as an operator-grade control plane that complements IAM Access Analyzer, GCP IAM drift, Microsoft Entra governance, and broader cloud-security readiness.</p></div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="sh"><h2>What these repos have in common</h2><div class="note">risk signal · owner context · evidence packet · next action</div></div>
+        <div class="stack">
+          <div class="src"><div class="src-name">Risk signal</div><div class="src-tit">Make threat posture explicit</div><p>Disabled detectors, stale findings, credential abuse, runtime compromise, and exfiltration posture are modeled as named operating risks instead of scattered alert-console noise.</p></div>
+          <div class="src"><div class="src-name">Owner context</div><div class="src-tit">Tie each issue to a response lane</div><p>Every finding carries the accountable cloud, SOC, platform, or response owner so leadership can see who owns containment and evidence readiness.</p></div>
+          <div class="src"><div class="src-name">Evidence packet</div><div class="src-tit">Keep proof reusable</div><p>Summary APIs, sample JSON, screenshots, docs, and CLI output make the page useful for audits, diligence, GTM demos, and internal operating reviews.</p></div>
         </div>
       </section>`
   );
