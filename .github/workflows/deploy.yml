@@ -47,7 +47,7 @@ jobs:
             echo "FAIL: no site/, dist/, or build/ produced"
             exit 1
           fi
-          echo "DEPLOY_DIR=$DEPLOY_DIR" >> $GITHUB_ENV
+          echo "DEPLOY_DIR=$DEPLOY_DIR" >> "$GITHUB_ENV"
           test -f "$DEPLOY_DIR/index.html" || (echo "FAIL: $DEPLOY_DIR/index.html missing" && exit 1)
 
       - name: FTP Deploy
